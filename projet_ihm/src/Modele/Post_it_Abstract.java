@@ -1,6 +1,8 @@
 package Modele;
 
-public abstract class Post_it_Abstract implements Post_it_Interface{
+import javax.swing.JPanel;
+
+public abstract class Post_it_Abstract extends JPanel implements Post_it_Interface{
 
 
 }
