@@ -15,12 +15,19 @@ public class Post_it_Base extends Post_it_Abstract{
 	public Post_it_Base(String name,Date d) {
 		this.name = name;
 		this.date = d;
+		this.color =new Color(243, 243, 146);
 		this.setLayout(new GridLayout(1, 1));
 		font= new Font("Lucida Handwriting", Font.BOLD,12 );
 		jt = new JTextArea();
 		jt.setFont(font);
-		jt.setBackground(new Color(243, 243, 146));
+		jt.setBackground(color);
 		this.add(this.jt);
 	}
+
+	@Override
+	public void setColor(Color color2) {
+		this.jt.setBackground(color2);
+	}
+	
 	
 }

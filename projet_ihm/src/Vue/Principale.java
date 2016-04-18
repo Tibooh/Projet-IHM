@@ -55,8 +55,6 @@ public class Principale extends JFrame {
 
 	JTextField name;
 
-	Timer timer;
-
 	public Principale() {
 
 		/* Liste pour les sauvegardes */
@@ -166,7 +164,7 @@ public class Principale extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setVisible(true);
-
+/*
 		timer = new Timer();
 		timer.schedule(new TimerTask() {
 
@@ -185,6 +183,7 @@ public class Principale extends JFrame {
 
 			}
 		}, 1000, 1000);
+		*/
 	}
 
 	/**

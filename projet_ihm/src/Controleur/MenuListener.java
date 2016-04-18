@@ -8,6 +8,7 @@ import javax.swing.JMenuItem;
 
 import Modele.Post_it_Abstract;
 import Modele.Post_it_Interface;
+import Vue.Fenetre_param;
 import Vue.Post_it_vue;
 import Vue.Principale;
 
@@ -27,6 +28,9 @@ public class MenuListener implements ActionListener {
 		else if(jm.getText()=="Terminer Tache"){
 			p.ajoute_po(p.get_po());
 			this.p.dispose();
+		}
+		else if(jm.getText()=="Parametres"){
+			new Fenetre_param(p);
 		}
 	}
 
