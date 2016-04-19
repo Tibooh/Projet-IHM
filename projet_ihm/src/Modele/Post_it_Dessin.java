@@ -21,8 +21,6 @@ public class Post_it_Dessin extends Post_it_Abstract implements MouseListener, M
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 		this.add(a);
-		
-		//this.setVisible(true);
 	}
 
 
