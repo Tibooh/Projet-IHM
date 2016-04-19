@@ -8,9 +8,12 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import Modele.PanelColor;
+
 public class Fenetre_param extends JFrame {
 
 	Post_it_vue p;
+	PanelColor pc;
 	
 	public Fenetre_param(Post_it_vue p) {
 		
@@ -20,6 +23,7 @@ public class Fenetre_param extends JFrame {
 		param.setLayout(new BoxLayout(param, BoxLayout.Y_AXIS));
 		param.add(new JLabel("Transparence"));
 		JSlider slider = new JSlider(0,100);
+		slider.setValue(100);
 		slider.setMajorTickSpacing(1);
 		slider.setMinorTickSpacing ((int) 0.1);
 		slider.addChangeListener(new ChangeListener() {
@@ -34,7 +38,9 @@ public class Fenetre_param extends JFrame {
 		});
 		slider.setMajorTickSpacing(10);
 		param.add(slider);
-		param.add(new JLabel("Couleur"));
+		//param.add(new JLabel("Couleur"));
+		//this.pc = new PanelColor(p);
+		//param.add(pc);
 		param.add(new JLabel("Font"));
 		
 		

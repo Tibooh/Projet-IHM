@@ -14,8 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import com.sun.jmx.snmp.Timestamp;
-
 import Controleur.MenuListener;
 import Modele.Post_it_Abstract;
 
@@ -134,7 +132,7 @@ public class Post_it_vue extends JFrame {
 				if(r<255&&g>G&&b>B)
 					p.setColor(new Color((int)r,(int)g,(int)b));
 				
-				System.out.println("tic = "+sec+" r : "+r+" g : "+g+" b : "+b);
+				//System.out.println("tic = "+sec+" r : "+r+" g : "+g+" b : "+b);
 				
 			}
 		}, 1000, 1000);

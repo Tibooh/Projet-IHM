@@ -5,13 +5,9 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -31,6 +27,7 @@ import javax.swing.SwingConstants;
 
 import Controleur.Cb_Listener;
 import Controleur.Creer_Post_it;
+import Modele.PanelColor;
 import Modele.Post_it_Abstract;
 
 public class Principale extends JFrame {
@@ -54,6 +51,8 @@ public class Principale extends JFrame {
 	JTextField mi;
 
 	JTextField name;
+	
+	PanelColor pc;
 
 	public Principale() {
 
@@ -80,7 +79,7 @@ public class Principale extends JFrame {
 		date.setLayout(new GridLayout(2, 5));
 		date.add(new JLabel("Jour"));
 		date.add(new JLabel("Mois"));
-		date.add(new JLabel("Année"));
+		date.add(new JLabel("Annï¿½e"));
 		date.add(new JLabel("Heure"));
 		date.add(new JLabel("Minutes"));
 
@@ -99,6 +98,9 @@ public class Principale extends JFrame {
 		creation.add(cb);
 		creation.add(new JLabel("Titre du post-it"));
 		creation.add(name);
+		creation.add(new JLabel("Couleur"));
+		this.pc = new PanelColor();
+		creation.add(pc);
 		creation.add(date);
 		creation.add(buttonCreer);
 
@@ -238,6 +240,10 @@ public class Principale extends JFrame {
 		return cal.getTime();
 		// simpleDateFormat.parse(this.j.getText()+"/"+this.m.getText()+"/"+this.a.getText()+"
 		// "+this.h.getText());
+	}
+
+	public Color getColor() {
+		return this.pc.getColor();
 	}
 
 }

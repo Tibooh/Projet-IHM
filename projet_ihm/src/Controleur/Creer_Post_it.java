@@ -1,9 +1,8 @@
 package Controleur;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Modele.Post_it_Base;
@@ -24,15 +23,15 @@ public class Creer_Post_it implements ActionListener {
 		
 		String name =p.getNomDuP();
 		Date dat = p.getDate();
-
+		Color c = p.getColor();
 
 		if(p.text=="Text"){
-			Post_it_Base pi = new Post_it_Base(name,dat);
+			Post_it_Base pi = new Post_it_Base(name,dat,c);
 			p.nouveauPost_it(pi);
 			new Post_it_vue(p,pi);
 		}
 		else if(p.text=="Dessin"){
-			new Post_it_vue(p,new Post_it_Dessin());
+			new Post_it_vue(p,new Post_it_Dessin(name,dat,c));
 		}
 	}
 

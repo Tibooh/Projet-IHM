@@ -12,10 +12,10 @@ public class Post_it_Base extends Post_it_Abstract{
 	JTextArea jt;
 	Font font;
 	
-	public Post_it_Base(String name,Date d) {
+	public Post_it_Base(String name,Date d,Color c) {
 		this.name = name;
 		this.date = d;
-		this.color =new Color(243, 243, 146);
+		this.color = c;
 		this.setLayout(new GridLayout(1, 1));
 		font= new Font("Lucida Handwriting", Font.BOLD,12 );
 		jt = new JTextArea();
