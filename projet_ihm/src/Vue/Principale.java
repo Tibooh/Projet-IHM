@@ -104,7 +104,7 @@ public class Principale extends JFrame {
 		creation.add(date);
 		creation.add(buttonCreer);
 
-		JPanel dropbox = new JPanel();
+		//JPanel dropbox = new JPanel();
 
 		JPanel gestion = new JPanel();
 		gestion.setLayout(new BoxLayout(gestion, BoxLayout.Y_AXIS));
@@ -157,7 +157,7 @@ public class Principale extends JFrame {
 		onglets.addTab("Creation", creation);
 		onglets.addTab("Gestion", gestion);
 		onglets.addTab("Parametres", param);
-		onglets.addTab("DropBox", dropbox);
+		//onglets.addTab("DropBox", dropbox);
 		onglets.setOpaque(true);
 
 		jp.add(onglets);

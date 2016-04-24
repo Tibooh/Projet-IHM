@@ -59,7 +59,7 @@ public class PanelColor extends JPanel {
 			}
 		};
 		
-		c = new Color(0,0,0);
+		c = new Color(219,219,96);
 		
 		this.setLayout(new FlowLayout());
 	
@@ -74,23 +74,23 @@ public class PanelColor extends JPanel {
 		
 		
 		js1 = new JSlider(0,255);
-		js1.setValue(0);
+		js1.setValue(219);
 		js1.addChangeListener(l1);
 		js2 = new JSlider(0,255);
-		js2.setValue(0);
+		js2.setValue(219);
 		js2.addChangeListener(l1);
 		js3 = new JSlider(0,255);
-		js3.setValue(0);
+		js3.setValue(96);
 		js3.addChangeListener(l1);
 		jp1.add(js1);
 		jp1.add(js2);
 		jp1.add(js3);
 		
-		jt1= new JTextField("0      ");
+		jt1= new JTextField("219    ");
 		jt1.setFocusable(false);
-		jt2= new JTextField("0      ");
+		jt2= new JTextField("219    ");
 		jt2.setFocusable(false);
-		jt3= new JTextField("0      ");
+		jt3= new JTextField("96     ");
 		jt3.setFocusable(false);
 		jp2.add(jt1);
 		jp2.add(jt2);

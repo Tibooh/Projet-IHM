@@ -5,10 +5,17 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -24,6 +31,7 @@ public class Post_it_vue extends JFrame {
 	Point mouseDownCompCoords;
 	Post_it_vue t = this;
 	Timer timer;
+	private boolean audioLaunched=false;
 
 	public Post_it_vue(Principale prin, final Post_it_Abstract pi) {
 		this.prin = prin;
@@ -112,6 +120,7 @@ public class Post_it_vue extends JFrame {
 			float ticR = (R-r)/(sec);
 			float ticG = (G-g)/(sec);
 			float ticB = (B-b)/(sec);
+			
 			@Override
 			public void run() {
 				// System.out.println("tic");
@@ -133,7 +142,29 @@ public class Post_it_vue extends JFrame {
 					p.setColor(new Color((int)r,(int)g,(int)b));
 				
 				//System.out.println("tic = "+sec+" r : "+r+" g : "+g+" b : "+b);
-				
+				if ((int) r > 250 && (int) g < 5 && (int) b < 5
+						&& audioLaunched == false) {
+					System.out.println("Fin du temps");
+					try {
+						AudioInputStream audioIn = AudioSystem
+								.getAudioInputStream(new File(
+										"resources/beep-01a.wav"));
+						// Get a sound clip resource.
+						Clip clip = AudioSystem.getClip();
+						// Open audio clip and load samples from the audio input
+						// stream.
+						clip.open(audioIn);
+						clip.start();
+					} catch (UnsupportedAudioFileException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					} catch (LineUnavailableException e) {
+						e.printStackTrace();
+					}
+					audioLaunched = true;
+				}
+
 			}
 		}, 1000, 1000);
 
