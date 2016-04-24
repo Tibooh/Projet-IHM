@@ -22,6 +22,7 @@ public class Post_it_Base extends Post_it_Abstract{
 		jt.setFont(font);
 		jt.setBackground(color);
 		this.add(this.jt);
+		jt.setDragEnabled(true);
 	}
 
 	@Override

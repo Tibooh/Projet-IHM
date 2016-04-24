@@ -5,7 +5,9 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Timer;
@@ -147,8 +149,8 @@ public class Post_it_vue extends JFrame {
 					System.out.println("Fin du temps");
 					try {
 						AudioInputStream audioIn = AudioSystem
-								.getAudioInputStream(new File(
-										"resources/beep-01a.wav"));
+								.getAudioInputStream(new BufferedInputStream(new FileInputStream(
+										"projet_ihm/resources/beep-01a.wav")));
 						// Get a sound clip resource.
 						Clip clip = AudioSystem.getClip();
 						// Open audio clip and load samples from the audio input
