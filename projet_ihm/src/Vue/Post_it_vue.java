@@ -34,12 +34,17 @@ public class Post_it_vue extends JFrame {
 	Post_it_vue t = this;
 	Timer timer;
 	private boolean audioLaunched=false;
+	Boolean coul;
+	Boolean son;
 
-	public Post_it_vue(Principale prin, final Post_it_Abstract pi) {
+	public Post_it_vue(Principale prin, final Post_it_Abstract pi,final Boolean coul,final Boolean son) {
 		this.prin = prin;
 		this.mouseDownCompCoords = null;
 		this.p = pi;
 		this.add(this.p);
+		this.coul=coul;
+		this.son = son;
+		
 		this.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -140,12 +145,12 @@ public class Post_it_vue extends JFrame {
 				if(b>B)
 					b+=ticB;
 				
-				if(r<255&&g>G&&b>B)
+				if((r<255&&g>G&&b>B)&&coul)
 					p.setColor(new Color((int)r,(int)g,(int)b));
 				
 				//System.out.println("tic = "+sec+" r : "+r+" g : "+g+" b : "+b);
-				if ((int) r > 250 && (int) g < 5 && (int) b < 5
-						&& audioLaunched == false) {
+				if ( son&& ((int) r > 250 && (int) g < 5 && (int) b < 5
+						&& audioLaunched == false) ) {
 					System.out.println("Fin du temps");
 					try {
 						AudioInputStream audioIn = AudioSystem

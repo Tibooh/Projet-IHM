@@ -24,14 +24,16 @@ public class Creer_Post_it implements ActionListener {
 		String name =p.getNomDuP();
 		Date dat = p.getDate();
 		Color c = p.getColor();
+		Boolean couleur = p.getcoulDyn();
+		Boolean son = p.getSonDyn();
 
 		if(p.text=="Text"){
 			Post_it_Base pi = new Post_it_Base(name,dat,c);
 			p.nouveauPost_it(pi);
-			new Post_it_vue(p,pi);
+			new Post_it_vue(p,pi,couleur,son);
 		}
 		else if(p.text=="Dessin"){
-			new Post_it_vue(p,new Post_it_Dessin(name,dat,c));
+			new Post_it_vue(p,new Post_it_Dessin(name,dat,c),couleur,son);
 		}
 	}
 

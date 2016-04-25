@@ -61,7 +61,7 @@ public class PanelColor extends JPanel {
 		
 		c = new Color(219,219,96);
 		
-		this.setLayout(new FlowLayout());
+//		this.setLayout();
 	
 		jp1 = new JPanel();
 		jp1.setLayout(new BoxLayout(jp1,BoxLayout.PAGE_AXIS));
@@ -102,8 +102,8 @@ public class PanelColor extends JPanel {
 		jta.setBackground(c);
 		jta.setFocusable(false);
 		
-		jp3.add(jt4);
 		jp3.add(jta);
+		jp3.add(jt4);
 		
 		this.add(jp1);
 		this.add(jp2);

@@ -1,6 +1,7 @@
 package Vue;
 
 import java.awt.BorderLayout;
+import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -24,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 import Controleur.Cb_Listener;
 import Controleur.Creer_Post_it;
@@ -52,6 +54,9 @@ public class Principale extends JFrame {
 
 	JTextField name;
 	
+	Checkbox couleur;
+	Checkbox son ;
+	
 	PanelColor pc;
 
 	public Principale() {
@@ -60,6 +65,8 @@ public class Principale extends JFrame {
 		listeTermine = new ArrayList<>();
 		listeEnCour = new ArrayList<>();
 
+
+		
 		Container jp = this.getContentPane();
 		onglets = new JTabbedPane(SwingConstants.TOP);
 		buttonCreer = new JButton("Creer");
@@ -75,6 +82,8 @@ public class Principale extends JFrame {
 		cb.addItem("Dessin");
 		cb.addActionListener(new Cb_Listener(this));
 
+		
+		
 		JPanel date = new JPanel();
 		date.setLayout(new GridLayout(2, 5));
 		date.add(new JLabel("Jour"));
@@ -95,14 +104,36 @@ public class Principale extends JFrame {
 		date.add(h);
 		date.add(mi);
 
-		creation.add(cb);
-		creation.add(new JLabel("Titre du post-it"));
-		creation.add(name);
-		creation.add(new JLabel("Couleur"));
+		
+		JPanel type = new JPanel();
+		type.setBorder(new TitledBorder("Type"));
+		type.add(cb);
+		creation.add(type);
+		
+		JPanel titre = new JPanel();
+		titre.setBorder(new TitledBorder("Titre"));
+		name.setPreferredSize(new Dimension(200, 22));
+		titre.add(name);
+		creation.add(titre);
+		
 		this.pc = new PanelColor();
+		pc.setBorder(new TitledBorder("Couleur"));
 		creation.add(pc);
-		creation.add(date);
+		
+		JPanel expiration = new JPanel();
+		expiration.setLayout(new BoxLayout(expiration, BoxLayout.Y_AXIS));
+		expiration.setBorder(new TitledBorder("Expiration"));
+		
+		expiration.add(date);
+		//creation.add(new JLabel("Couleur d'expiration dynamique"));
+		couleur = new Checkbox("Couleur d'expiration dynamique", false);
+		son = new Checkbox("Son d'expiration", false);
+		expiration.add(couleur);
+		expiration.add(son);
+		
+		creation.add(expiration);
 		creation.add(buttonCreer);
+		
 
 		//JPanel dropbox = new JPanel();
 
@@ -156,12 +187,12 @@ public class Principale extends JFrame {
 
 		onglets.addTab("Creation", creation);
 		onglets.addTab("Gestion", gestion);
-		onglets.addTab("Parametres", param);
+		//onglets.addTab("Parametres", param);
 		//onglets.addTab("DropBox", dropbox);
 		onglets.setOpaque(true);
 
 		jp.add(onglets);
-		this.setSize(320, 400);
+		this.setSize(370, 400);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(true);
@@ -244,6 +275,13 @@ public class Principale extends JFrame {
 
 	public Color getColor() {
 		return this.pc.getColor();
+	}
+
+	public Boolean getcoulDyn() {
+		return this.couleur.getState();
+	}
+	public Boolean getSonDyn() {
+		return this.son.getState();
 	}
 
 }
