@@ -45,6 +45,11 @@ public class Principale extends JFrame {
 	JList<String> lterm;
 	DefaultListModel<String> modelListeEnCours;
 	DefaultListModel<String> modelListeTerm;
+	
+	JList<String> lpatage;
+	DefaultListModel<String> modelListPartage;
+	
+	JComboBox<String> postit;
 
 	JTextField j;
 	JTextField m;
@@ -135,7 +140,63 @@ public class Principale extends JFrame {
 		creation.add(buttonCreer);
 		
 
-		//JPanel dropbox = new JPanel();
+		
+		
+		
+		JPanel dropbox = new JPanel();
+		
+		JPanel envoi = new JPanel();
+		envoi.setBorder(new TitledBorder("Envoi"));
+		envoi.setLayout(new BoxLayout(envoi, BoxLayout.Y_AXIS));
+		
+		JPanel pgroupe = new JPanel();
+		JPanel ppo = new JPanel();
+
+		JComboBox<String> groupes = new JComboBox<>();
+		groupes.addItem("IHM");
+		groupes.addItem("Perso");
+		groupes.addItem("Groupe Revision");
+		
+		postit = new JComboBox<>();
+		
+		for(Post_it_Abstract p : this.listeEnCour)
+			postit.addItem(p.getName());
+		
+		ppo.add(new JLabel("Post-it"));
+		ppo.add(postit);
+		pgroupe.add(new JLabel("Groupes : "));
+		pgroupe.add(groupes);
+		envoi.add(pgroupe);
+		envoi.add(ppo);
+		envoi.add(new JButton("Envoyer"));
+		
+		JPanel reception = new JPanel();
+		reception.setBorder(new TitledBorder("Reception"));
+		reception.setLayout(new BoxLayout(reception, BoxLayout.Y_AXIS));
+		
+		
+		modelListPartage = new DefaultListModel<>();
+		lpatage = new JList<>(modelListPartage);
+		lpatage.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100), 3));
+		lpatage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		lpatage.setMaximumSize(new Dimension(250, 100));
+		lpatage.setMinimumSize(new Dimension(250, 100));
+		lpatage.setPreferredSize(new Dimension(250, 100));
+		lpatage.setSize(new Dimension(250, 100));
+		lpatage.setVisibleRowCount(5);
+		JScrollPane scrollPane4 = new JScrollPane(lpatage);
+		scrollPane4.setPreferredSize(new Dimension(250, 100));
+		scrollPane4.setBackground(new Color(1f, 1f, 1f, .5f));
+		// scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane4.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		reception.add(scrollPane4);
+		reception.add(new JButton("Recuperer"));
+		
+		dropbox.setLayout(new BoxLayout(dropbox, BoxLayout.Y_AXIS));
+		dropbox.add(envoi);
+		dropbox.add(reception);
+		
 
 		JPanel gestion = new JPanel();
 		gestion.setLayout(new BoxLayout(gestion, BoxLayout.Y_AXIS));
@@ -188,7 +249,7 @@ public class Principale extends JFrame {
 		onglets.addTab("Creation", creation);
 		onglets.addTab("Gestion", gestion);
 		//onglets.addTab("Parametres", param);
-		//onglets.addTab("DropBox", dropbox);
+		onglets.addTab("Partage", dropbox);
 		onglets.setOpaque(true);
 
 		jp.add(onglets);
@@ -232,6 +293,7 @@ public class Principale extends JFrame {
 
 	public void nouveauPost_it(Post_it_Abstract po) {
 		modelListeEnCours.addElement(po.getName());
+		postit.addItem(po.getName());
 
 		lencours.setModel(modelListeEnCours);
 		synchronized (listeEnCour) {

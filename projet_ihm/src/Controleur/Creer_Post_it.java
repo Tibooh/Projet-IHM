@@ -33,7 +33,9 @@ public class Creer_Post_it implements ActionListener {
 			new Post_it_vue(p,pi,couleur,son);
 		}
 		else if(p.text=="Dessin"){
-			new Post_it_vue(p,new Post_it_Dessin(name,dat,c),couleur,son);
+			Post_it_Dessin pd = new Post_it_Dessin(name,dat,c);
+			p.nouveauPost_it(pd);			
+			new Post_it_vue(p,pd,couleur,son);
 		}
 	}
 
